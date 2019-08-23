@@ -21,6 +21,17 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+
+    // axios.put(`http://localhost:5000/api/colors/${color.id}`, color)
+    //   .then(res => {
+    //     console.log(res);
+
+    //     const index = props.ColorList.findIndex(color => color.id === color.id);
+
+    //     props.ColorList[index] = color;
+    //     props.upda
+    //   })
+
   };
 
   const deleteColor = color => {

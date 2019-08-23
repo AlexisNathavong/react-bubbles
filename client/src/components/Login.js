@@ -33,6 +33,7 @@ const Login = () => {
 
       setNewUser('');
   }
+  console.log(state);
 
   return (
     <>
