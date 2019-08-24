@@ -11,7 +11,7 @@ const BubblePage = () => {
   // fetch your colors data from the server when the component mounts
   // set that data to the colorList state property
 
-  const [newColorList, setNewColorList] = useState({name: '', code: ''});
+  const [newColor, setNewColor] = useState({color: '', code: {hex: ''}});
 
   const getColor = () => {
     axiosWithAuth().get(`http://localhost:5000/api/colors`)
@@ -28,24 +28,38 @@ const BubblePage = () => {
     getColor();
   }, [])
 
+  // const fetchColor = id => {
+  //   axiosWithAuth().get(`http://localhost:5000/api/colors/${id}`)
+  //     .then(res => setColorList({ color: res.data}))
+  //     .catch(err => console.log(err.response));
+  // };
+
+  // useEffect(() => {
+  //   fetchColor(props.match.params.id);
+
+  // }, [props.match.params.id]);
+  
+
   //handleChanges
-  const handleChanges = e => {
-    setNewColorList({...newColorList, [e.target.name]: e.target.value});
-  };
+  // const handleChanges = e => {
+  //   setNewColor;
+  // };
 
   const addColor = e => {
     e.preventDefault();
-    axiosWithAuth().post('http://localhost:5000/api/colors', newColorList)
+    console.log('Welcome', newColor);
+    axiosWithAuth().post('http://localhost:5000/api/colors', newColor)
       .then(res => {
-        console.log(res);
+        console.log('hello',res);
         setColorList(res.data);
       })
       .catch(err => {
         console.log(err.response);
       })
 
-      setNewColorList('');
+      setNewColor('');
   };
+
 
   return (
     <>
@@ -56,9 +70,9 @@ const BubblePage = () => {
             <input 
               className="color-form"
               type="text"
-              name="name"
+              name="color"
               value={colorList.name}
-              onChange={handleChanges}
+              onChange={(e)=> setNewColor({...newColor, color: e.target.value})}
             />
         </div>
 
@@ -69,7 +83,7 @@ const BubblePage = () => {
               type="text"
               name="code"
               value={colorList.code}
-              onChange={handleChanges}
+              onChange={(e)=> setNewColor({...newColor, code:{hex: e.target.value}})}
             />
         </div>
 
