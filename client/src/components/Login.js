@@ -1,65 +1,78 @@
 import React, { useState, useReducer } from "react";
-import { reducer, initialState } from "./reducers/LoginReducer";
-import axios from "axios";
+import { reducer, initialState } from './reducers/LoginReducer';
 
+import axios from 'axios';
 
-const Login = () => {
+const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
+
   const [user, setNewUser] = useState({username: '', password: ''});
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleChanges = e => {
-    setNewUser({...user, [e.target.name]: e.target.value});
+   setNewUser({...user, [e.target.name]: e.target.value});
   };
 
-  const userLogin = e => {
+  const login = e => {
     e.preventDefault();
 
-    axios.post('http://localhost:5000/api/login', user)
+    axios.post(`http://localhost:5000/api/login`, user)
       .then(res => {
-        console.log('Login api', res.data);
+        console.log(res)
 
         localStorage.setItem('token', res.data.payload);
 
         dispatch({ type: 'LOGIN', payload: res.data});
+
+        props.history.push('/bubblepage');
+
       })
       .catch(err => {
-        console.log('Error in Login api', err.response);
+        console.log(err.response);
       })
+
       setNewUser('');
-      console.log('State', state);
-  };
+  }
+  console.log(state);
 
   return (
     <>
-
+      <h1>Welcome to the Bubble App!</h1>
+      
+    
       <form>
-        <div className="user-form">
-          <label> Username: </label>
-          <input
-            className="user-form"
+        <div className="form-group">
+          <label>Username: </label>
+
+          <input 
+            className="form-group"
             type="text"
             name="username"
-            placeholder="Add a username"
+            placeholder="username"
             value={user.username} required
             onChange={handleChanges}
           />
+
         </div>
 
-        <div className="user-form">
-          <label> Password: </label>
-          <input
-            className="user-form"
+        <div className="form-group">
+          <label>Password: </label>
+
+          <input 
+            className="form-group"
             type="password"
             name="password"
-            placeholder="Add a password"
+            placeholder="password"
             value={user.password} required
             onChange={handleChanges}
           />
+          
         </div>
 
-        <button className="submit-btn" onClick={userLogin}>Submit</button>
+        <button type="submit" onClick={login}>Submit</button>
+
       </form>
     </>
   );

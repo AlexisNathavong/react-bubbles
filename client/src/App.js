@@ -11,13 +11,13 @@ import BubblePage from './components/BubblePage';
 import axios from 'axios';
 
 function App() {
-  // const [colorList, setColorList] = useState([]);
+  const [colorList, setColorList] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/api/colors')
-  //     .then(res => setColorList(res.data))
-  //     .catch(err => console.log(err.response));
-  // })
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/colors')
+      .then(res => setColorList(res.data))
+      .catch(err => console.log(err.response));
+  })
 
   return (
     <Router>
@@ -25,7 +25,7 @@ function App() {
         <nav>
           <Link to='/'>Login</Link>
 
-          <Link to='/protected'>Bubble Page</Link>
+          <Link to='/bubblepage'>Bubble Page</Link>
         </nav>
 
 

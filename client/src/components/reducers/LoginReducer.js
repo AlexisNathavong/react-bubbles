@@ -1,10 +1,10 @@
-
 export const initialState = {
-    userLogin: [{
-        username: '',
-        password: ''
-
-    }]
+    login: [
+        {
+            username: '',
+            password: ''
+        }
+    ]
 };
 
 export const reducer = (state = initialState, action) => {
@@ -12,9 +12,10 @@ export const reducer = (state = initialState, action) => {
         case 'LOGIN':
             return {
                 ...state,
-                userLogin: action.payload
+                login: action.payload
             }
-        default:
-            return state;
+
+            default:
+                return state;
     }
 }
