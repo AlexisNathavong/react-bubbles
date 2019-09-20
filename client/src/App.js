@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { Link } from 'react-router-dom';
 import BubblePage from './components/BubblePage';
 import axios from 'axios';
+import { Nav } from './components/StyledWidgets';
 
 function App() {
   const [colorList, setColorList] = useState([]);
@@ -22,11 +23,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+
+        <Nav>
           <Link to='/'>Login</Link>
 
           <Link to='/bubblepage'>Bubble Page</Link>
-        </nav>
+        </Nav>
 
 
         <Switch>

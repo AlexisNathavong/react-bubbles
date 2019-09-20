@@ -2,6 +2,7 @@ import React, { useState, useReducer } from "react";
 import { reducer, initialState } from './reducers/LoginReducer';
 
 import axios from 'axios';
+import { Card, Context } from './StyledWidgets';
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -38,43 +39,42 @@ const Login = props => {
   console.log(state);
 
   return (
-    <>
-      <h1>Welcome to the Bubble App!</h1>
-      
-    
-      <form>
-        <div className="form-group">
-          <label>Username: </label>
+    <Card>
+      <Context>
+        <form>
+          <div className="form-group">
+            <label>Username: </label>
 
-          <input 
-            className="form-group"
-            type="text"
-            name="username"
-            placeholder="username"
-            value={user.username} required
-            onChange={handleChanges}
-          />
+            <input 
+              className="form-group"
+              type="text"
+              name="username"
+              placeholder="username"
+              value={user.username} required
+              onChange={handleChanges}
+            />
 
-        </div>
+          </div>
 
-        <div className="form-group">
-          <label>Password: </label>
+          <div className="form-group">
+            <label>Password: </label>
 
-          <input 
-            className="form-group"
-            type="password"
-            name="password"
-            placeholder="password"
-            value={user.password} required
-            onChange={handleChanges}
-          />
-          
-        </div>
+            <input 
+              className="form-group"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={user.password} required
+              onChange={handleChanges}
+            />
+            
+          </div>
 
-        <button type="submit" onClick={login}>Submit</button>
+          <button type="submit" onClick={login}>Submit</button>
 
-      </form>
-    </>
+        </form>
+      </Context>
+    </Card>
   );
 };
 
