@@ -46,7 +46,7 @@ Follow these steps to set up and work on your project:
 - [ ] Push commits: git push origin `<firstName-lastName>`.
 - [ ] **RUN** `yarn install or npm install` at the root to retrieve all the dependencies for the node server. You will not need to create any react apps here nor will you need to install any other dependencies. You should have all you need in this repo.
 - [ ] **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
-- [ ] **RUN** `yarn start or npm start` to get your API up and running on `http://localhost:3333`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
+- [ ] **RUN** `yarn start or npm start` to get your API up and running on `http://localhost:5000`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
 - [ ] **LOOK** at your `client` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
 - [ ] **cd** into `client` and run `yarn install or npm install` to retrieve the client side dependencies.
 - [ ] **RUN** `yarn start or npm start` to fire up your React application.
@@ -93,4 +93,4 @@ Build a login form to authenticate your users.
 **Data Visualization**
 
 - [ ] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
-- [ ] Play around with the data visualation happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
+- [ ] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
